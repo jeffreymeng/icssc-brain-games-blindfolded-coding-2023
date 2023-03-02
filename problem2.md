@@ -31,7 +31,7 @@ Out of these three degrees, degree 8 is the direction with the most brain waves.
 
 ### The task
 Write a function `lab_location(readings: list[int]) -> int` that takes in a list of
-exactly 360 integers, with the nth integer representing the reading at n degrees.
+exactly 360 integers (COM: mention that you have to wrap around), with the nth integer representing the reading at n degrees.
 
 Return the integer degree with the highest reading relative to the background, since
 that's where the lab must be! If there are multiple equal highest readings, you may return
