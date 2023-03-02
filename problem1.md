@@ -1,5 +1,5 @@
 ## 1. Getting In
-You’ve recently learned about the secret ICSSC brain cell laboratory in the 
+(COM: I thought -1 was an invalid floor) You’ve recently learned about the secret ICSSC brain cell laboratory in the 
 basement of Rowland Hall! You’ve decided to break in to steal some of these 
 precious brain cells for yourself. After consulting some blueprints of the 
 building, you decide the easiest way in is through the elevator. You don’t 
@@ -16,7 +16,7 @@ instead.
 Write a function `rewire_elevator(floors: list[int]) -> list[int]` that takes in a list of
 integers, with the nth integer representing the floor that the nth button 
 takes you to. The input will always have at least **four** items in it, and will 
-always be in the format `[-1, 1, 2, 3, ...]` (the basement
+always be in the format (COM: sorted) `[-1, 1, 2, 3, ...]` (the basement
 contains only one floor).
 
 Return a list of integers representing the floors that each
@@ -33,7 +33,7 @@ elevator’s checks above.
 [-3,-2,-1, 1, 3, 6]
 ```
 **Explanation**: The third button now takes us to floor -2, the sum hasn't changed,
-and there are no duplicate numbers.
+and there are no duplicate numbers. (COM: the button that says X now takes you to Y)
 
 **Sample input 2:**
 ```python
