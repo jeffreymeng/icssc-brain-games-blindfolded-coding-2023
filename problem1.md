@@ -1,45 +1,20 @@
-## 1. Getting In
-(COM: I thought -1 was an invalid floor) You’ve recently learned about the secret ICSSC brain cell laboratory in the 
-basement of Rowland Hall! You’ve decided to break in to steal some of these 
-precious brain cells for yourself. After consulting some blueprints of the 
-building, you decide the easiest way in is through the elevator. You don’t 
-have the key card required to press the `-1` button, but luckily, you notice 
-the elevator control panel is loose! You can reorder the wires to make any 
-button go to any floor, as long as you make sure the elevator’s safety checks 
-still pass. It turns out the elevator only makes sure that the sum of all 
-target floors is correct, and that there are no duplicate floors. Interestingly, 
-the elevator doesn't even check that all buttons go to valid floors! You decide 
-to rewire the elevator such that the button for floor `2` takes you to floor `-1` 
-instead.
+## Problem 1. Warming Up
 
-### The task
-Write a function `rewire_elevator(floors: list[int]) -> list[int]` that takes in a list of
-integers, with the nth integer representing the floor that the nth button 
-takes you to. The input will always have at least **four** items in it, and will 
-always be in the format (COM: sorted) `[-1, 1, 2, 3, ...]` (the basement
-contains only one floor).
+Your team has recently learned about the secret ICSSC brain cell laboratory in the 
+basement of Rowland Hall! You've decided to break in to steal some of these 
+precious brain cells for yourself. Before you can start breaking in though, 
+you need to do some warm up exercises to practice your coordination.
 
-Return a list of integers representing the floors that each
-button takes you to after you rewire it, with the third button in the list
-(the button at index 2) taking you to floor -1 instead, following the 
-elevator’s checks above.
+Write a function `warm_up()` that prints nine things (by calling `print()` nine times):
 
-**Sample input:**
-```python
-[-1, 1, 2, 3, 4, 5]
-```
-**Sample output:** (_One of many possible outputs_)
-```python
-[-3,-2,-1, 1, 3, 6]
-```
-**Explanation**: The third button now takes us to floor -2, the sum hasn't changed,
-and there are no duplicate numbers. (COM: the button that says X now takes you to Y)
+- print `l3tz dooo this`
+- print the answer to: 23 to the power of 5
+- print `there they're their it's ok`
+- print `"`
+- print `a double quote`
+- print `bob then the words a quote then an actual quote`
+- print the number of bytes in a bit (as an integer)
+- print `hi wait you typed it wrong go back two characters ok this time you really did type it wrong press delete stop`
+- print the computed result of the largest of these three values: 248 to the power of 30, 4 to the power of 200, 45 to the power of 45
 
-**Sample input 2:**
-```python
-[-1, 1, 2, 3]
-```
-**Sample output 2:**  (_One of many possible outputs_)
-```python
-[-5,-3,-1, 9]
-```
+[Get started with the starter code: problem1.py](problem1.py)

@@ -1,32 +1,56 @@
+## 3. Taking Measurements
+You’re now in the basement, and you just need to find the lab! Fortunately, you 
+brought your brain wave detector with you to detect brain waves emitted by the
+brain cell lab. You rotate around in a circle, quickly taking measurements
+for every degree. Unfortunately, it turns out that there are many sources 
+of brain waves in the environment, which creates background interference, so
+the lab isn't in the direction with the highest number of brain waves, but rather
+the direction with the number of brain waves that stands out the most against the background
+waves around it. To determine how much the background waves are for a particular degree, 
+look at two readings to the left and two readings to the right of the measurement, 
+and average these four readings. 
+Can you write a program to find the degree with the highest readings relative to the background
+wave measurements?
 
-## 3. Crack The Lock
-Congratulations! You've found the entrance to the lab. Now you just need to get through the keypad to enter
-the lab. Fortunately, it turned out that due to some archaic password requirements by the keypad manufacturers,
-for any digit `n` (with n between 0 and 9), the digit that comes after it must come after every instance of `n` in
-the code. For example, one possibility is that every `0` in the code must be followed by a `2`, and every `2` must be
-followed by a `3`, and so on. Furthermore, you were able to determine a map of digits of the code, specifying exactly
-what digit must come after any specific digit in the code. It's possible that a digit cannot be followed by any digits
-(meaning it must be the last digit in the code), and in fact, the code **must** end in a digit that's not followed
-by any other digits. The code is four digits long, so your task is to find all the possible codes 
-**of length 4** for this lock.
-
-For example, suppose you have the following map:
+For example, suppose you get the following readings
 ```
-0 -> 2
-1 -> END
-2 -> 3
-3 -> 1
-4 -> 4
-5 -> 3
-6 -> 8
-7 -> 2
-8 -> 9
-9 -> END
+...
+5 deg: 70 units
+6 deg: 80 units
+7 deg: 90 units
+8 deg: 89 units
+9 deg: 70 units
+10 deg: 20 units
+11 deg: 70 units
+...
 ```
-This map specifies that no digit can come after 1 and 9 (COM: say "because they both point to END"), and these are the only possible end digits of the code. The
-only possible codes of length 4 that satisfy these requirements are `"0231"` and `"7231"`. Note that it's possible for the
-map to have cycles in it (for example, `4` can only be followed by `4` in this example), which of course
-means it can't be part of the code.
+The relative reading at 7 deg is 90 - (70 + 80 + 89 + 90)/4 = 7.75 units. <br/>
+The relative reading at 8 deg is 89 - (80 + 90 + 70 + 20)/4 = 24.0 units. <br/>
+The relative reading at 9 deg is 70 - (90 + 89 + 20 + 70)/4 = 2.75 units. <br/>
+Out of these three degrees, degree 8 is the direction with the most brain waves.
 
 ### The task
-Write a function `find_lock_solutions(map: list[int]) -> list[str]` that takes in a 10 element long list where the 
+Write a function `lab_location(readings: list[int]) -> int` that takes in a list of
+exactly 360 integers, with the nth integer representing the reading at n degrees.
+
+Return the integer degree with the highest reading relative to the background, since
+that's where the lab must be! Note that to calculate the reading for some angles (such as 0 degrees),
+you may need to wrap around to other degrees. If there are multiple equal highest readings, you may return
+the location of any one of them.
+
+[Go to the starter code: problem3.py](problem3.py)
+
+**Sample Input**
+```python
+lab_location([100, 90, 85] + [85] * 355 + [90, 98])
+# e.g. [100, 90, 85, (85 repeated 355 more times), 90, 98]
+```
+Return: `0`. The background radiation for this angle is (90 + 85 + 90 + 98)/4, which is 90.75. 
+The measurement at degree 0 is 100, 9.75 higher than the background_
+
+**Sample Input 2**
+```python
+lab_location([70] * 4 + [70, 80, 90, 89, 70, 20, 70] + [70] * 349)
+```
+Return: `7`. (value = 89) See above example for details.
+

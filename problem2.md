@@ -1,52 +1,46 @@
-## 2. Taking Measurements
-You’re now in the basement, and you just need to find the lab! Fortunately, you 
-brought your brain wave detector with you to detect brain waves emitted by the
-brain cell lab. You rotate around in a circle, quickly taking measurements
-for every degree. Unfortunately, it turns out that there are many sources 
-of brain waves in the environment, which creates background interference, so
-the lab isn't in the direction with the highest number of brain waves, but rather
-the direction with the number of brain waves that stands out the most against the background
-waves around it. To determine how much the background waves are for a particular degree, 
-look at two readings to the left and two readings to the right of the measurement, 
-and average these four readings. 
-Can you write a program to find the degree with the highest readings relative to the background
-wave measurements?
-
-For example, suppose you get the following readings
-```
-...
-5 deg: 70 units
-6 deg: 80 units
-7 deg: 90 units
-8 deg: 89 units
-9 deg: 70 units
-10 deg: 20 units
-11 deg: 70 units
-...
-```
-The relative reading at 7 deg is 90 - (70 + 80 + 89 + 90)/4 = 7.75 units.
-The relative reading at 8 deg is 89 - (80 + 90 + 70 + 20)/4 = 24.0 units.
-The relative reading at 9 deg is 70 - (90 + 89 + 20 + 70)/4 = 2.75 units.
-Out of these three degrees, degree 8 is the direction with the most brain waves.
+## 2. Getting In 
+You're now ready to infiltrate the lab! After consulting some blueprints of the 
+building, you decide the easiest way in to the basement lab is through the elevator. You don’t 
+have the key card required to press the `-1` button (for the basement), but luckily, you notice 
+the elevator control panel is loose! You can reorder the wires to make any 
+button go to any floor, as long as you make sure the elevator’s safety checks 
+still pass. It turns out the elevator only makes sure that the sum of all 
+target floors is correct, and that there are no duplicate floors. Interestingly, 
+the elevator doesn't even check that all buttons go to valid floors! You decide 
+to rewire the elevator such that the button for floor `2` takes you to floor `-1` 
+instead.
 
 ### The task
-Write a function `lab_location(readings: list[int]) -> int` that takes in a list of
-exactly 360 integers (COM: mention that you have to wrap around), with the nth integer representing the reading at n degrees.
+Write a function `rewire_elevator(floors: list[int]) -> list[int]` that takes in a list of
+integers, with the nth integer representing the floor that the nth button 
+takes you to. The input will always have at least **four** items in it, and will 
+always be in the format `[-1, 1, 2, 3, ...]`. e.g. The input will always start with
+`-1, 1, 2, 3` and continue sequentially until the end of the array.
 
-Return the integer degree with the highest reading relative to the background, since
-that's where the lab must be! If there are multiple equal highest readings, you may return
-the location of any one of them.
+Return a list of integers representing the floors that each
+button takes you to after you rewire it, with the third button in the list
+(the button at index 2) taking you to floor -1 instead, following the 
+elevator’s checks above.
 
-**Sample Input**
+[Check out the template: problem2.py](problem2.py)
+
+**Sample input:**
 ```python
-lab_location([100, 90, 85] + [85] * 355 + [90, 98])
-# e.g. [100, 90, 85, (85 repeated 355 more times), 90, 98]
+rewire_elevator([-1, 1, 2, 3, 4, 5])
 ```
-Return: `0`. The background radiation for this angle is 
-(90 + 85 + 90 + 98)/4, which is 90.75. The measurement at degree 0 is 100, 9.75 higher than the background! 
-
-**Sample Input 2**
+**Sample output:** (_One of many possible outputs_)
 ```python
-lab_location([70] * 4 + [70, 80, 90, 89, 70, 20, 70] + [70] * 349)
+[-3,-2,-1, 1, 3, 6]
 ```
-Return: `7`. (value = 89) See above example for details.
+**Explanation**: The button that used to take us to 2 now takes us to floor -1, the sum hasn't changed,
+and there are no duplicate numbers, which is all we want.
+
+**Sample input 2:**
+```python
+rewire_elevator([-1, 1, 2, 3])
+```
+**Sample output 2:**  (_One of many possible outputs_)
+```python
+[-5,-3,-1, 9]
+```
+(Same as above)

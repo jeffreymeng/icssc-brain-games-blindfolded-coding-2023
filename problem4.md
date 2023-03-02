@@ -1,40 +1,70 @@
 
+# 4. Crack The Lock
+Congratulations! You've found the entrance to the lab. Now you just need to get through the keypad to enter
+the lab. Fortunately, it turned out that due to some archaic password requirements by the keypad manufacturers,
+for any digit `n` (with n between 0 and 9), the digit that comes after it must come after every instance of `n` in
+the code. For example, one possibility is that every `0` in the code must be followed by a `2`, and every `2` must be
+followed by a `3`, and so on. Furthermore, you were able to determine a map of digits of the code, specifying exactly
+what digit must come after any specific digit in the code. It's possible that a digit cannot be followed by any digits
+(meaning it must be the last digit in the code), and in fact, the code **must** end in a digit that's not followed
+by any other digits. The code is four digits long, so your task is to find all the possible codes 
+**of length 4** for this lock.
 
-## 4. Raid The Cabinets
-Now that you're in it's time to get the brain cells. You see a colorful wall full of what looks like square cabinets, each holding
-a single brain cell for testing. Upon closer inspection, you realize that you're actually looking at a few large cabinets,
-each one color, consisting of adjacent cells of the same color! You only have time to open one cabinet, so please choose 
-the biggest one and return the size of the cabinet, which is the number of square cells that make up the cabinet. 
-Cells are adjacent if they're touching on the top, bottom, left, or right, but **not** if they are only touching diagonally.
-
-### The task
-Write a function `largest_color(colors: list[list[int]]) -> int` that takes in a 2d array of integers, with each different
-integer representing a different color, and each individual number representing the color of the cabinet at that cell.
-Return an integer, the size of the largest group of adjacent cells that are the same color.
-
-_You can earn some partial credit (at least 3/10 test cases) if you correctly solve this problem for the case where there's
-only one adjacent group of each color (e.g. like sample input 1)_
-
-**Sample Input 1**
-```python
-[ [1, 1, 2, 2, 2],
-  [3, 1, 1, 1, 2],
-  [3, 3, 1, 4, 4]
-]
+For example, suppose you have the following map:
 ```
-**Sample Output**
-`6`. The `1` cabinet is made up of the most adjacent cells, 6.
-
-
-**Sample Input 1**
-```python
-[ [1, 1, 2, 2, 2],
-  [3, 1, 1, 1, 2],
-  [3, 3, 1, 4, 2]
-  [3, 3, 4, 4, 2],
-  [1, 1, 1, 2, 2]
-]
+0 -> 2
+1 -> END
+2 -> 3
+3 -> 1
+4 -> 4
+5 -> 3
+6 -> 8
+7 -> 2
+8 -> 9
+9 -> END
 ```
-**Sample Output**
-`7`. The `2` cabinets are made up of 7 adjacent cells. Although the `1` cabinets are bigger, they're not connected, so
-it consists of one cabinet of size `6` and one cabinet of size `3`.
+This map specifies that no digit can come after 1 and 9 (because they both point to END), and these are the only possible
+end digits of the code. The only possible codes of length 4 that satisfy these requirements are `"0231"` and `"7231"`. 
+Note that it's possible for the map to have cycles in it (for example, `4` can only be followed by `4` in this example), 
+which of course means it can't be part of the code.
+
+## The task
+Write a function `find_lock_solutions(map: list[int | "END"]) -> list[str]` that takes in a 10 element long list where the
+digit at i = 0 is the number that comes after 0, the digit at i = 1 is the number that comes after 1, etc. If a digit is followed
+by END instead, it will be the string `"END"`. Return a list of all valid combinations, with each combo **as a string**.
+
+[Go to the starter code: problem4.py](problem4.py)
+
+### Sample Input 1
+```python3
+find_lock_solutions([0, 2, 3, 4, "END", 5, 6, 7, 8, 9])
+```
+### Sample Output 1
+```python
+["1234"]
+```
+The input corresponds to this map:
+```
+0 -> 0
+1 -> 2
+2 -> 3
+3 -> 4
+4 -> END
+5 -> 6
+6 -> 5
+7 -> 7
+8 -> 8
+9 -> 9
+```
+In this lock, 1 points to 2, 2 points to 3, 3 points to 4, and 4 points to END, which leads to the combination "1234". There
+are no other combinations possible in this scenario.
+
+### Sample Input 2
+```python3
+find_lock_solutions([2, "END", 3, 1, 4, 3, 8, 2, 9, "END"])
+```
+### Sample Output 2
+```python3
+["0231", "7231"]
+```
+(this input corresponds to the first example above)
