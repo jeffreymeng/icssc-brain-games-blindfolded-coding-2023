@@ -23,7 +23,7 @@ For example, suppose you have the following map:
 8 -> 9
 9 -> END
 ```
-This map specifies that no digit can come after 1 and 9, and these are the only possible end digits of the code. The
+This map specifies that no digit can come after 1 and 9 (COM: say "because they both point to END"), and these are the only possible end digits of the code. The
 only possible codes of length 4 that satisfy these requirements are `"0231"` and `"7231"`. Note that it's possible for the
 map to have cycles in it (for example, `4` can only be followed by `4` in this example), which of course
 means it can't be part of the code.
