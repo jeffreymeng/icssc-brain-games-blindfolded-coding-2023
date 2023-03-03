@@ -2,7 +2,7 @@
 
 # Set up autograder files
 
-cp /autograder/submission/1_getting_in.py /autograder/source/1_getting_in.py
+cp /autograder/submission/problem5.py /autograder/source/problem5.py
 
 cd /autograder/source
 
