@@ -15,7 +15,7 @@ Write a function `rewire_elevator(floors: list[int]) -> list[int]` that takes in
 integers, with the nth integer representing the floor that the nth button 
 takes you to. The input will always have at least **four** items in it, and will 
 always be in the format `[-1, 1, 2, 3, ...]`. e.g. The input will always start with
-`-1, 1, 2, 3` and continue sequentially until the end of the array.
+`-1, 1, 2, 3` and continue with sequential integers until the end of the list.
 
 Return a list of integers representing the floors that each
 button takes you to after you rewire it, with the third button in the list
@@ -43,4 +43,5 @@ rewire_elevator([-1, 1, 2, 3])
 ```python
 [-5,-3,-1, 9]
 ```
-(Same as above)
+Same thing: The button that used to take us to 2 now takes us to floor -1, the sum hasn't changed,
+and there are no duplicate numbers, which is all we want.

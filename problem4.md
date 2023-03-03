@@ -31,7 +31,8 @@ which of course means it can't be part of the code.
 ## The task
 Write a function `find_lock_solutions(map: list[int | "END"]) -> list[str]` that takes in a 10 element long list where the
 digit at i = 0 is the number that comes after 0, the digit at i = 1 is the number that comes after 1, etc. If a digit is followed
-by END instead, it will be the string `"END"`. Return a list of all valid combinations, with each combo **as a string**.
+by END instead, it will be the string `"END"`. Return a list of all valid combinations, with each combo **as a string**. Your
+list can be in any order.
 
 [Go to the starter code: problem4.py](problem4.py)
 
@@ -68,3 +69,4 @@ find_lock_solutions([2, "END", 3, 1, 4, 3, 8, 2, 9, "END"])
 ["0231", "7231"]
 ```
 (this input corresponds to the first example above)
+(you can also output the solution in a different order)

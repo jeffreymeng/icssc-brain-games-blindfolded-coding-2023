@@ -56,8 +56,8 @@ largest_color(
 **Sample Output**
 
 ```python
-7
+8
 ``` 
 
-The `2` cabinets are made up of 7 adjacent cells. Although the `1` cabinets are bigger, they're not connected, so
+The `2` cabinets are made up of 8 adjacent cells. Although the `1` cabinets are bigger, they're not connected, so
 it consists of one cabinet of size `6` and one cabinet of size `3`.
