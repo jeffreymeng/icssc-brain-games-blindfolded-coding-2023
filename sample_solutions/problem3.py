@@ -4,7 +4,7 @@ def lab_location(readings: list[int]):
     return max(range(360),
                key=lambda i: readings[i] - sum(readings[(di + i + 360) % 360] for di in [-2, -1, 1, 2]) / 4)
 
-    # the one liner does the same thing as this code which may be easier to understand:
+def lab_location2(readings: list[int]):
     largest_deg = -1
     largest_val = -1
 
