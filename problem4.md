@@ -29,7 +29,7 @@ Note that it's possible for the map to have cycles in it (for example, `4` can o
 which of course means it can't be part of the code.
 
 ## The task
-Write a function `find_lock_solutions(map: list[int | "END"]) -> list[str]` that takes in a 10 element long list where the
+Write a function `find_lock_solutions(map: list[int str]) -> list[str]` that takes in a 10 element long list where the
 digit at i = 0 is the number that comes after 0, the digit at i = 1 is the number that comes after 1, etc. If a digit is followed
 by END instead, it will be the string `"END"`. Return a list of all valid combinations, with each combo **as a string**. Your
 list can be in any order.

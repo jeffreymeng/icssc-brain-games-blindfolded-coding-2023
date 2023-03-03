@@ -1,6 +1,6 @@
 
 
-def find_lock_solutions(next_combination_digit: list[int | "END"]) -> list[str]:
+def find_lock_solutions(next_combination_digit: list[int | str]) -> list[str]:
     # your code here
 
     return 0 # change this!
