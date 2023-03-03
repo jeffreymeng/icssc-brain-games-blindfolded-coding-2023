@@ -5,7 +5,7 @@ basement of Rowland Hall! You've decided to break in to steal some of these
 precious brain cells for yourself. Before you can start breaking in though, 
 you need to do some warm up exercises to practice your coordination.
 
-Write a function `warm_up()` that prints eight things (by calling `print()` nine times):
+Write a function `warm_up()` that prints eight things (by calling `print()` eight times):
 
 - print `l3tz dooo this`
 - print the answer to: 23 to the power of 5
