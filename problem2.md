@@ -30,7 +30,7 @@ rewire_elevator([-1, 1, 2, 3, 4, 5])
 ```
 **Sample output:** (_One of many possible outputs_)
 ```python
-[-3,-2,-1, 1, 3, 6]
+[-3,-2,-1, 2, 4, 14]
 ```
 **Explanation**: The button that used to take us to 2 now takes us to floor -1, the sum hasn't changed,
 and there are no duplicate numbers, which is all we want.
